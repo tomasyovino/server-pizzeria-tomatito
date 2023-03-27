@@ -14,6 +14,17 @@ class OrderDAO extends DAOContainer {
         };
         return instance;
     };
+
+    async createOrder(products, amount, payMethod) {
+        const newOrder = new OrderModel({
+            products,
+            amount,
+            payMethod
+        });
+
+        const order = await newOrder.save();
+        return order;
+    }
 };
 
 export default OrderDAO;
